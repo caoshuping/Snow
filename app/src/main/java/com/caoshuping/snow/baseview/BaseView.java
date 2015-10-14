@@ -25,6 +25,8 @@ public abstract class BaseView extends View {
 
     protected abstract void logic();
 
+    protected abstract void init();
+
     @Override
     protected final void onDraw(Canvas canvas) {
 
@@ -49,6 +51,7 @@ public abstract class BaseView extends View {
         @Override
         public void run() {
 
+            init();
             while(running)
             {
                 logic();

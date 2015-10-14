@@ -24,7 +24,7 @@ public class MyView extends BaseView {
         init();
     }
 
-    private void init(){
+    protected void init(){
         paint = new Paint();
         paint.setTextSize(30);
         paint.setARGB(255, 255, 255, 255);
