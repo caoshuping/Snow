@@ -1,10 +1,12 @@
 package com.caoshuping.snow.myview;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.util.AttributeSet;
 
+import com.caoshuping.snow.R;
 import com.caoshuping.snow.baseview.BaseView;
 import com.caoshuping.snow.item.RainItem;
 
@@ -19,11 +21,12 @@ public class RainView extends BaseView {
 
 
     private ArrayList<RainItem> rains = new ArrayList<RainItem>();
+    private int rainItemNum;
     private RainItem rainItem;
 
     @Override
     protected void init(){
-        for(int i = 0; i < 200; i++)
+        for(int i = 0; i < rainItemNum; i++)
         {
             rainItem = new RainItem(getWidth(),getHeight());
             rains.add(rainItem);
@@ -35,11 +38,16 @@ public class RainView extends BaseView {
     public RainView(Context context) {
         super(context);
         //init();
+        rainItemNum = 0;
     }
 
     public RainView(Context context, AttributeSet attrs) {
         super(context, attrs);
        // init();
+        TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.RainView);
+        rainItemNum = ta.getInteger(R.styleable.RainView_rainNum, 80);
+        ta.recycle();
+
     }
 
     @Override

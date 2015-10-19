@@ -28,7 +28,7 @@ public class RainItem extends BaseItem{
         random = new Random();
         startX = random.nextInt(screenWidth);
         startY = random.nextInt(screenHeight/2);
-        rainSizeX = -5 + random.nextInt(rainSize);
+        rainSizeX = -5 + random.nextInt(rainSize/2);
         rainSizeY = 10 + random.nextInt(rainSize);
         rainRapid = 0.2f + random.nextFloat();
     }
@@ -42,7 +42,7 @@ public class RainItem extends BaseItem{
 
     public RainItem(int screenWidth, int screenHeight) {
 
-        rainSize = 10;
+        rainSize = 20;
         this.screenWidth = screenWidth;
         this.screenHeight = screenHeight;
         init();
