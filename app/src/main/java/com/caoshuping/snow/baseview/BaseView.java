@@ -32,12 +32,14 @@ public abstract class BaseView extends View {
 
         super.onDraw(canvas);
 
-        drawSub(canvas);
-
         if(thread == null)
         {
             thread = new MyThread();
             thread.start();
+        }
+        else
+        {
+            drawSub(canvas);
         }
     }
 

@@ -24,22 +24,25 @@ public class RainItem extends BaseItem{
     private Random random;
     private int rainSize;
 
-    private void init() {
+    private void randomRain(){
         random = new Random();
         startX = random.nextInt(screenWidth);
-        startY = random.nextInt(screenHeight);
-        rainSizeX = 1 + random.nextInt(rainSize);
+        startY = random.nextInt(screenHeight/2);
+        rainSizeX = -5 + random.nextInt(rainSize);
         rainSizeY = 10 + random.nextInt(rainSize);
+        rainRapid = 0.2f + random.nextFloat();
+    }
+    private void init() {
+        randomRain();
         stopX = startX + rainSizeX;
         stopY = startY + rainSizeY;
-        rainRapid = 0.2f + random.nextFloat();
         paint = new Paint();
         paint.setARGB(255, 255, 255, 255);
     }
 
     public RainItem(int screenWidth, int screenHeight) {
 
-        rainSize = 20;
+        rainSize = 10;
         this.screenWidth = screenWidth;
         this.screenHeight = screenHeight;
         init();
@@ -67,9 +70,9 @@ public class RainItem extends BaseItem{
         stopX += rainSizeX*rainRapid;
         if(startY > screenHeight)
         {
-            startX = 20;
+            randomRain();
             stopX = startX + rainSizeX;
-            startY = 0;
+
             stopY = startY + rainSizeY;
         }
     }
